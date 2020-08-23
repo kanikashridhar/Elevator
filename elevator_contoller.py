@@ -1,5 +1,5 @@
 """ Add docstring """
-from typing import List, Text
+from typing import Dict, List, Text, Union
 from elevator import Elevator
 
 class Error(Exception):
@@ -32,7 +32,7 @@ class ElevatorController:
       if len(elevator_positions) == 0:
         elevator_positions = [0] * number_of_elevators
 
-      # create an array of Elevator objects
+      # create a list of Elevator objects
       for itr in range(0, number_of_elevators):
         new_elevator = Elevator(itr, floor_min, floor_max, elevator_positions[itr])
         self.elevators.append(new_elevator)
@@ -73,3 +73,8 @@ class ElevatorController:
         return elevator_selected.process_request()
       else:
         raise ValueError('Incorrect Floors')
+
+    def elevator_monitor(self, elevator_id: int) -> Dict[Text, Union[Text, int]]:
+      """ Get Elevator status based on elevator id."""
+      return self.elevators[elevator_id].get_current_status()
+

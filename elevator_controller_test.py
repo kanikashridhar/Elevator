@@ -51,6 +51,14 @@ class TestElevatorController(unittest.TestCase):
     expected_output = [['UP_1', 'OPEN_DOOR', 'CLOSE_DOOR']]
     self.assertListEqual(self.ec_obj.process_request(), expected_output)
 
+    # Elevator monitor to return elevator2 status
+    expected_elevator_2_status = {
+      'door': 'Close',
+       'running': False,
+       'direction': 'Up',
+       'current_floor': 0}
+    self.assertDictEqual(self.ec_obj.elevator_monitor(2), expected_elevator_2_status)
+
   def test_process_none_of_elevators_available(self):
     dummy_ec_obj = ElevatorController(
       number_of_elevators=2, floor_min=-1, floor_max=10, request_queue=[])

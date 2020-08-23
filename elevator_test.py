@@ -43,7 +43,6 @@ class TestElevator(unittest.TestCase):
     self.assertListEqual(self.elevator_obj.process_request(), expected_output)
 
   def test_process_request_less_than_min_floor_requested(self):
-    """Test to"""
     self.elevator_obj.requested_floors = [2, -2]
     with self.assertRaises(ValueError):
       self.elevator_obj.process_request()
@@ -52,6 +51,19 @@ class TestElevator(unittest.TestCase):
     self.elevator_obj.requested_floors = [30]
     with self.assertRaises(ValueError):
       self.elevator_obj.process_request()
+
+  def test_get_current_status(self):
+    dummy_elevator_obj = Elevator(
+      elevtor_num=0, floor_min=-1, floor_max=10, current_floor=0)
+    dummy_elevator_obj.requested_floors = [1]
+    dummy_elevator_obj.process_request()
+    expected_output = {
+      'door': 'Close',
+       'running': False,
+       'direction': 'Up',
+       'current_floor': 1}
+    self.assertDictEqual(dummy_elevator_obj.get_current_status(), expected_output)
+
 
 
 if __name__ == '__main__':

@@ -1,7 +1,7 @@
 """Elevator class to represent each Elevator"""
 import time
 from utils import elevator_helper as eh
-from typing import List, Text
+from typing import Dict, List, Text, Union
 
 class Elevator:
     """
@@ -112,7 +112,13 @@ class Elevator:
       self.reset_lift_params()
       return value_to_return
 
-    def reset_lift_params(self):
+    def get_current_status(self) -> Dict[Text, Union[Text, int]]:
+      return ({'door':'Open' if self._door_open else 'Close',
+               'running': self.is_running,
+               'direction': 'Up' if self.direction == 1 else 'Down',
+               'current_floor': self.current_floor})
+
+    def reset_lift_params(self) -> None:
         # when request finishes reset the direction
         self.direction = 1
         self.is_running = False
