@@ -14,39 +14,39 @@ class TestElevatorController(unittest.TestCase):
     self.assertEqual(self.ec_obj.floor_max, 10)
 
   def test_process_request(self):
-    # Lift=0 will process the request
+    # elevator=0 will process the request
     self.ec_obj.request_queue = [2, 3]
     expected_output = [['UP_1', 'UP_1', 'OPEN_DOOR', 'CLOSE_DOOR'],
                        ['UP_1', 'OPEN_DOOR', 'CLOSE_DOOR']]
     self.assertListEqual(self.ec_obj.process_request(), expected_output)
 
-    # Lift=1 will process the request
+    # elevator=1 will process the request
     self.ec_obj.request_queue = [0]
     expected_output = [['OPEN_DOOR', 'CLOSE_DOOR']]
     self.assertListEqual(self.ec_obj.process_request(), expected_output)
 
-    # Lift=0 will process the request
+    # elevator=0 will process the request
     self.ec_obj.request_queue = [4]
     expected_output = [['UP_1', 'OPEN_DOOR', 'CLOSE_DOOR']]
     self.assertListEqual(self.ec_obj.process_request(), expected_output)
 
-    # Lift=0 will process the request, already on the floor
+    # elevator=0 will process the request, already on the floor
     self.ec_obj.request_queue = [4]
     expected_output = [['OPEN_DOOR', 'CLOSE_DOOR']]
     self.assertListEqual(self.ec_obj.process_request(), expected_output)
 
-    # Lift=1 will process the request
+    # elevator=1 will process the request
     self.ec_obj.request_queue = [5, 0]
     expected_output = [['OPEN_DOOR', 'CLOSE_DOOR'],
                        ['UP_1', 'UP_1', 'UP_1', 'UP_1', 'UP_1', 'OPEN_DOOR', 'CLOSE_DOOR']]
     self.assertListEqual(self.ec_obj.process_request(), expected_output)
 
-    # Lift=2 will process the request
+    # elevator=2 will process the request
     self.ec_obj.request_queue = [-1]
     expected_output = [['DOWN_1', 'OPEN_DOOR','CLOSE_DOOR']]
     self.assertListEqual(self.ec_obj.process_request(), expected_output)
 
-    # Lift=2 will process the request
+    # elevator=2 will process the request
     self.ec_obj.request_queue = [0]
     expected_output = [['UP_1', 'OPEN_DOOR', 'CLOSE_DOOR']]
     self.assertListEqual(self.ec_obj.process_request(), expected_output)
@@ -77,8 +77,3 @@ class TestElevatorController(unittest.TestCase):
     self.ec_obj.request_queue = [2, -2]
     with self.assertRaises(ValueError):
       self.ec_obj.process_request()
-
-
-
-if __name__ == '__main__':
-    unittest.main()

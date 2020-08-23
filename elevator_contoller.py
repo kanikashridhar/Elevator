@@ -13,7 +13,7 @@ class NotReady(Error):
 class ElevatorController:
     """
     ElevatorSystem - Class that contains array of Elevator objects
-    self.number_of_elevators = total number of lifts in the system
+    self.number_of_elevators = total number of elevators in the system
     self.floor_max = top floor
     self.floor_min = bottom most floor
     self.request_queue = request queue for each lift
@@ -38,9 +38,7 @@ class ElevatorController:
         self.elevators.append(new_elevator)
 
     def process_request(self) -> List[List[Text]]:
-      """
-        process_request : method to select elevator and process request
-      """
+      """This method is to select elevator and process request."""
       if self.request_queue:
         first_floor = sorted(self.request_queue)[0]
         distance = []
@@ -75,6 +73,6 @@ class ElevatorController:
         raise ValueError('Incorrect Floors')
 
     def elevator_monitor(self, elevator_id: int) -> Dict[Text, Union[Text, int]]:
-      """ Get Elevator status based on elevator id."""
+      """This method will fetch the elevator status based on elevator id."""
       return self.elevators[elevator_id].get_current_status()
 

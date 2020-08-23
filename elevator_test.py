@@ -63,8 +63,3 @@ class TestElevator(unittest.TestCase):
        'direction': 'Up',
        'current_floor': 1}
     self.assertDictEqual(dummy_elevator_obj.get_current_status(), expected_output)
-
-
-
-if __name__ == '__main__':
-    unittest.main()
