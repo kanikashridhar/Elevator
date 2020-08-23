@@ -10,6 +10,10 @@ class NotReady(Error):
   """Raised when non of the elevators are available to take request."""
   pass
 
+class InValidElevator(Error):
+  """Raised when a Incorrect elevator id is recieved."""
+
+
 class ElevatorController:
     """
     ElevatorSystem - Class that contains array of Elevator objects
@@ -74,5 +78,7 @@ class ElevatorController:
 
     def elevator_monitor(self, elevator_id: int) -> Dict[Text, Union[Text, int]]:
       """This method will fetch the elevator status based on elevator id."""
+      if elevator_id > self.number_of_elevators or elevator_id < 0:
+        raise InValidElevator('Incorrect Elevator Id')
       return self.elevators[elevator_id].get_current_status()
 

@@ -5,16 +5,16 @@ The Elevator system contains an elevator controller and ‘n’ number of elevat
 
 ```
 An Elevator can:-  
-> Go up and down and track the current floor.
-> Accept requests from the elevator controller from inside or outside of the elevator.
-> Intelligently decides to move up or down, given a list of requested floors. 
+1) Go up and down and track the current floor.
+2) Accept requests from the elevator controller from inside or outside of the elevator.
+3) Intelligently decides to move up or down, given a list of requested floors. 
 The logic currently considers the first requested floor in the list.
-> Provide its current status such as door open or close, current floor, is running or not.              
-> Throws an error if the requested floor is less than min and greater than max.
+4) Provide its current status such as door open or close, current floor, is running or not.              
+5) Throws an error if the requested floor is less than min and greater than max.
 
 ## Elevator controller can:-
-> Handles requests for ‘n’ number of elevators.
-> Elevator controller accepts multiple requests and chooses the best elevator for the request.
+1) Handles requests for ‘n’ number of elevators.
+2) Elevator controller accepts multiple requests and chooses the best elevator for the request.
 
 Sample request:-
 Two people requested to stop at 2 and 3
