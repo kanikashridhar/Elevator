@@ -27,17 +27,28 @@ class TestElevatorController(unittest.TestCase):
 
     # Lift=0 will process the request
     self.ec_obj.request_queue = [4]
-    expected_output = [['UP_1', 'OPEN_DOOR','CLOSE_DOOR']]
+    expected_output = [['UP_1', 'OPEN_DOOR', 'CLOSE_DOOR']]
+    self.assertListEqual(self.ec_obj.process_request(), expected_output)
+
+    # Lift=0 will process the request, already on the floor
+    self.ec_obj.request_queue = [4]
+    expected_output = [['OPEN_DOOR', 'CLOSE_DOOR']]
     self.assertListEqual(self.ec_obj.process_request(), expected_output)
 
     # Lift=1 will process the request
+    self.ec_obj.request_queue = [5, 0]
+    expected_output = [['OPEN_DOOR', 'CLOSE_DOOR'],
+                       ['UP_1', 'UP_1', 'UP_1', 'UP_1', 'UP_1', 'OPEN_DOOR', 'CLOSE_DOOR']]
+    self.assertListEqual(self.ec_obj.process_request(), expected_output)
+
+    # Lift=2 will process the request
     self.ec_obj.request_queue = [-1]
     expected_output = [['DOWN_1', 'OPEN_DOOR','CLOSE_DOOR']]
     self.assertListEqual(self.ec_obj.process_request(), expected_output)
 
     # Lift=2 will process the request
     self.ec_obj.request_queue = [0]
-    expected_output = [['OPEN_DOOR','CLOSE_DOOR']]
+    expected_output = [['UP_1', 'OPEN_DOOR', 'CLOSE_DOOR']]
     self.assertListEqual(self.ec_obj.process_request(), expected_output)
 
   def test_process_none_of_elevators_available(self):

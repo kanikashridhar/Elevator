@@ -1,10 +1,6 @@
 """Elevator class to represent each Elevator"""
 import time
-import random
-import typing
-# TODO: Change Exception
 from utils import elevator_helper as eh
-
 from typing import List, Text
 
 class Elevator:
@@ -40,7 +36,7 @@ class Elevator:
     def process_destination_floor(self):
       self._open_door()
       # wait for passengers to move out.
-      # time.sleep(1)
+      time.sleep(1)
       self._close_door()
       self._traversed_path.append(self._path)
       self._path = []
@@ -80,12 +76,8 @@ class Elevator:
 
     def process_request(self) -> List[Text]:
       """
-        recieves service_list and process them.
-        Broabdly 2 tasks:
-        TASK 1
-        # case when button is pressed from outside go to the requested floor
-        TASK 2
-        # process request when button from inside are pressed.
+        This method will be called by elevator_controller to handle cases wherein
+        someone requested to go to a floor from outside or when someone requested from inside.
       """
       print("Requested Floors = {}, current lift position = {}".format(
         self.requested_floors, self.current_floor))

@@ -39,10 +39,10 @@ class ElevatorController:
 
     def process_request(self) -> List[List[Text]]:
       """
-        process_request : method to select lift and process request
+        process_request : method to select elevator and process request
       """
       if self.request_queue:
-        first_floor = self.request_queue[0]
+        first_floor = sorted(self.request_queue)[0]
         distance = []
         try:
           # Find optimal elevator.

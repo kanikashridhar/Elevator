@@ -26,7 +26,7 @@ Output returned is:-
 
 ```
 
-#####How to Run:
+How to Run:
 ```
 1) Create and activate a python3 virtualenv.(Optional)
     python3 -m venv venv
@@ -38,7 +38,7 @@ Output returned is:-
 Change inputs as required in the testcases.
 ```
 
-#####Future work:
+Future work:
 ```
 1) We need to enhance the system to use better cost functions. Currently it determines the cost of moving an elevator up and down  by considering the first requested floor only.
 2) Need to improve upon error handling.
