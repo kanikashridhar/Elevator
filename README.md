@@ -1,23 +1,24 @@
 # Elevator
-The Elevator system contains an elevator controller and ‘n’ number of elevators.
+This code represents an Elevator system which consists of 
+1) Elevator controller 
+2) ‘n’ number of elevators.
 
 ![Screenshot](elevator.png)
 
 ```
-An Elevator can:-  
+An Elevator can perform following tasks:-  
 1) Go up and down and track the current floor.
 2) Accept requests from the elevator controller from inside or outside of the elevator.
-3) Intelligently decides to move up or down, given a list of requested floors. 
-The logic currently considers the first requested floor in the list.
-4) Provide its current status such as door open or close, current floor, is running or not.              
-5) Throws an error if the requested floor is less than min and greater than max.
+3) Given a list of floors, Intelligently decides to move up or down.
+4) Provide its current status such as door is open or closed, elevator's current floor, is it running or not.              
+5) Throws an error if the requested floor is less than min and greater than max floors.
 
-## Elevator controller can:-
-1) Handles requests for ‘n’ number of elevators.
-2) Elevator controller accepts multiple requests and chooses the best elevator for the request.
+Elevator controller can perform following tasks:-
+1) Elevator controller accepts multiple requests and chooses the best elevator among 'n' elevators for the request.
+2) Elevator controller provides elevator monitor which returns the current status of any given elevator.
 
 Sample request:-
-Two people requested to stop at 2 and 3
+Two people requested to stop at floors 2 and 3
 Elevator-1 current_floor = 0
 
 Output returned is:-
@@ -38,10 +39,11 @@ How to Run:
 Change inputs as required in the testcases.
 ```
 
-Future work:
+Assumptions and Future work:
 ```
-1) We need to enhance the system to use better cost functions. Currently it determines the cost of moving an elevator up and down  by considering the first requested floor only.
-2) Need to improve upon error handling.
-3) Consider using the moving elevator to accept the incoming request. Currently the elevator accepts new requests only when it is not running.
+1) We need to enhance the system to use better cost functions. The algorithm used to determine the cost of moving an elevator up and down considers the first nearest requested floor for cost calculation.
+2) The Code assumes that only a stopped elevator can accept the request. Future work is to push the requested floors request to the moving elevators also.
+The proposed algorithm will fetch one of the moving elevator which is moving in the same direction and is nearest to the requested floor. This approach will require to manage concurrent access of the requested_floors list, with the use of locks.
+3) Need to improve upon error handling.
 4) Expose elevator API and have a docker image for the solution. 
 ```
