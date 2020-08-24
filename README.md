@@ -29,11 +29,12 @@ Output returned is:-
 
 How to Run:
 ```
+Ensure you have python3 installed in your system.
 1) Create and activate a python3 virtualenv.(Optional)
     python3 -m venv venv
     source venv/bin/activate
 2) Download code from git rep.
-   Go to /Elevator folder and execute unit test cases for elevator and elevator controller. 
+   Go to code folder and execute unit test cases for elevator and elevator controller. 
     a) python -m unittest elevator_controller_test 
     b) python -m unittest elevator_test 
 Change inputs as required in the testcases.
