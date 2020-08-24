@@ -30,14 +30,14 @@ Output returned is:-
 How to Run:
 ```
 Ensure you have python3 installed in your system.
-1) Create and activate a python3 virtualenv.(Optional)
+Download code from git repo. Move to code folder.
+1) Create and activate a python3 virtualenv.
     python3 -m venv venv
     source venv/bin/activate
-2) Download code from git rep.
-   Go to code folder and execute unit test cases for elevator and elevator controller. 
+2)  Execute unit test cases for elevator and elevator controller. 
     a) python -m unittest elevator_controller_test 
     b) python -m unittest elevator_test 
-Change inputs as required in the testcases.
+Change inputs if required in the testcases files.(elevator_test.py and elevator_controller_test.py)
 ```
 
 Assumptions and Future work:
