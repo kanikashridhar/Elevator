@@ -42,9 +42,11 @@ Change inputs as required in the testcases.
 
 Assumptions and Future work:
 ```
-1) We need to enhance the system to use better cost functions. The algorithm used to determine the cost of moving an elevator (up and down) considers the first nearest requested floor for cost calculation.
+1) We need to enhance the system to use better cost functions. The algorithm used to determine the cost of moving an elevator (up and down) considers 
+   the first nearest requested floor for cost calculation.
 2) The Code assumes that only a stopped elevator can accept the request. Future work is to push the requested floors request to the moving elevators also.
-The proposed algorithm will fetch one of the moving elevator which is moving in the same direction and is nearest to the requested floor. This approach will require to handle concurrent access of the requested_floors list with the use of locks.
+   The proposed algorithm will fetch one of the moving elevator which is moving in the same direction and is nearest to the requested floor. 
+   This approach will require to handle concurrent access of the requested_floors list with the use of locks.
 3) Need to improve upon error handling.
 4) Expose elevator API and have a docker image for the solution. 
 ```
