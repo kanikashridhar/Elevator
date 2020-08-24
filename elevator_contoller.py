@@ -13,7 +13,6 @@ class NotReady(Error):
 class InValidElevator(Error):
   """Raised when a Incorrect elevator id is recieved."""
 
-
 class ElevatorController:
     """
     ElevatorSystem - Class that contains array of Elevator objects
