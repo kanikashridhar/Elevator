@@ -22,9 +22,6 @@ class Elevator:
       self._path = []
       self._traversed_path = []
 
-    def get_door_status(self):
-      return self._door_open
-
     def _open_door(self):
       """This method will set the door status and append the same to path."""
       self._door_open = True
@@ -35,7 +32,7 @@ class Elevator:
       self._door_open = False
       self._path.append('CLOSE_DOOR')
 
-    def process_destination_floor(self):
+    def _process_destination_floor(self):
       """This method will perform required actions when elevator has reached to the destination floor."""
       self._open_door()
       # wait for passengers to move out.
@@ -56,14 +53,14 @@ class Elevator:
           list_of_request = list(filter((self.current_floor).__ne__, list_of_request))
           # stop the lift, as it has reached one of its destination
           self.is_running = False
-          self.process_destination_floor()
+          self._process_destination_floor()
 
         if len(list_of_request) == 0:
           # if we have processed all list of request - break
           break
-        self.move_one_step()
+        self._move_one_step()
 
-    def move_one_step(self):
+    def _move_one_step(self):
       """This method will manage the movement of the elevator."""
       # move_one_step : moves Elevator one step up or down based on direction
       self.current_floor = self.current_floor + self.direction
